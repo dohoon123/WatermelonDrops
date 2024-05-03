@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     static GameManager instance;
-
+    public PoolManager pool;
     int score;
 
     private void Awake() {
@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void ManageSingleton() {
-        if (instance == null) {
+        if (instance != null) {
             gameObject.SetActive(false);
             Destroy(gameObject);
         }else {

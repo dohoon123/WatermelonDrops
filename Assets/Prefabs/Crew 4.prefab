@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 2987543578994447844}
   - component: {fileID: 1504521588152323409}
   - component: {fileID: 4959074084413497168}
+  - component: {fileID: 3555725045838100975}
   m_Layer: 0
-  m_Name: Crew0
+  m_Name: Crew 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 2.3, y: 2.3, z: 2.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -911644636, guid: d855c58d7b615404eaa62bf92e25a544, type: 3}
+  m_Sprite: {fileID: -1867675987, guid: d855c58d7b615404eaa62bf92e25a544, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -148,3 +149,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3555725045838100975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3803608921790599677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7a1e379422c5d445bafb125a5abd18d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCrewData:
+    sprite: {fileID: -911644636, guid: d855c58d7b615404eaa62bf92e25a544, type: 3}
+    crewNumber: 0
+    mass: 5
