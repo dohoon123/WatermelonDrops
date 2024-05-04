@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class Crew : MonoBehaviour
 {
-    [SerializeField] CrewData myCrewData;
+    [SerializeField] CrewData crewData;
 
     private void OnCollisionEnter2D(Collision2D other) {
         Crew cd = other.gameObject.GetComponent<Crew>();
+
+        if (cd.crewData.crewNumber == crewData.crewNumber) {
+            
+        }
+        
     }
 
     [System.Serializable]

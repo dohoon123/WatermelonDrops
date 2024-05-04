@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     [SerializeField] private InputActionReference click, pointerPosition;
+    [SerializeField] private float crewSpawnYPosition;
 
     Vector2 pointerInput;
     SelectCrewComponent SCComponent;
@@ -32,12 +33,7 @@ public class Player : MonoBehaviour
 
     private void PerformClick(InputAction.CallbackContext context) {
         int randomNumber = UnityEngine.Random.Range(0, 7);
-        if (gameManager == null)
-        {
-            Debug.Log("game manager null!");
-            return;
-        }
-        GameObject go = gameManager.pool.Get(randomNumber, pointerInput);
+        GameObject go = gameManager.pool.Get(randomNumber, new Vector3(pointerInput.x, crewSpawnYPosition, 0));
     }
 
     private Vector2 GetPointerInput() {
