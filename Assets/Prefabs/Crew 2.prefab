@@ -188,7 +188,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7a1e379422c5d445bafb125a5abd18d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myCrewData:
-    sprite: {fileID: -911644636, guid: d855c58d7b615404eaa62bf92e25a544, type: 3}
+  crewData:
     crewNumber: 2
     mass: 3

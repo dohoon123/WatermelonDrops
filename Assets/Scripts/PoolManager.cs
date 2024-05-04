@@ -20,7 +20,7 @@ public class PoolManager : MonoBehaviour
     }
 
     public GameObject Get(int index) {
-        GameObject select = GetGameobject(index);
+        GameObject select = GetGameobject(index, transform.position);
         
         if (select == null) {
             select = Instantiate(prefabs[index], transform);
@@ -32,7 +32,7 @@ public class PoolManager : MonoBehaviour
     }
 
     public GameObject Get(int index, Vector3 position) {
-        GameObject select = GetGameobject(index);
+        GameObject select = GetGameobject(index, position);
         
         if (select == null) {
             select = Instantiate(prefabs[index], position, quaternion.identity);
@@ -43,12 +43,13 @@ public class PoolManager : MonoBehaviour
         return select;
     }
 
-    private GameObject GetGameobject(int index) {
+    private GameObject GetGameobject(int index, Vector3 position) {
         GameObject select = null;
 
         foreach (GameObject item in pools[index]) {
             if (!item.activeSelf) {
                 select = item;
+                select.transform.position = position;
                 select.SetActive(true);
                 break;
             }

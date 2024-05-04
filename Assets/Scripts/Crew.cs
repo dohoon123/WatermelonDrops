@@ -4,20 +4,29 @@ using UnityEngine;
 
 public class Crew : MonoBehaviour
 {
-    [SerializeField] CrewData crewData;
+    public CrewData crewData;
 
     private void OnCollisionEnter2D(Collision2D other) {
-        Crew cd = other.gameObject.GetComponent<Crew>();
+        
+        if (!other.gameObject.TryGetComponent<Crew>(out var cd)) {
+            return;
+        }
+
+        if (crewData.crewNumber >= 6) {
+            return;
+        }
 
         if (cd.crewData.crewNumber == crewData.crewNumber) {
-            
+            //need to add score later
+
+            GameManager.instance.crewStack.Push(gameObject);
+            gameObject.SetActive(false);
+
         }
-        
     }
 
     [System.Serializable]
     public class CrewData {
-        public Sprite sprite;
         public int crewNumber;
         public float mass;
     }

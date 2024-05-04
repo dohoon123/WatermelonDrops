@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    static GameManager instance;
+    public static GameManager instance;
     public PoolManager pool;
+
+    public Stack<GameObject> crewStack = new();
     int score;
 
     private void Awake() {
@@ -14,6 +16,21 @@ public class GameManager : MonoBehaviour
 
     private void Start() {
         score = 0;
+    }
+
+    private void Update() {
+        if (crewStack.Count > 1) {
+            //calc average value of two gameobjects
+            GameObject go1 = crewStack.Pop();
+            GameObject go2 = crewStack.Pop();
+
+            if (!go1.TryGetComponent<Crew>(out var cd)) {
+                return;
+            }
+            
+            Vector2 averagePosition = (go1.transform.position + go2.transform.position) / 2;
+            pool.Get(cd.crewData.crewNumber + 1, averagePosition);
+        }
     }
 
     private void ManageSingleton() {

@@ -12,11 +12,9 @@ public class Player : MonoBehaviour
 
     Vector2 pointerInput;
     SelectCrewComponent SCComponent;
-    GameManager gameManager;
 
     private void Awake() {
         SCComponent = GetComponent<SelectCrewComponent>();
-        gameManager = FindObjectOfType<GameManager>();
     }
 
     void Update () {
@@ -32,8 +30,8 @@ public class Player : MonoBehaviour
     }
 
     private void PerformClick(InputAction.CallbackContext context) {
-        int randomNumber = UnityEngine.Random.Range(0, 7);
-        GameObject go = gameManager.pool.Get(randomNumber, new Vector3(pointerInput.x, crewSpawnYPosition, 0));
+        int randomNumber = UnityEngine.Random.Range(0, 2);
+        GameManager.instance.pool.Get(randomNumber, new Vector3(pointerInput.x, crewSpawnYPosition, 0));
     }
 
     private Vector2 GetPointerInput() {
