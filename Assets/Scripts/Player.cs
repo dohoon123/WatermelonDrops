@@ -10,14 +10,20 @@ public class Player : MonoBehaviour
     [SerializeField] private InputActionReference click, pointerPosition;
     [SerializeField] private float crewSpawnYPosition;
 
+    [SerializeField] float spawnCoolDown;
+    private float currentCoolDown;
+
     Vector2 pointerInput;
     SelectCrewComponent SCComponent;
 
     private void Awake() {
+        currentCoolDown = spawnCoolDown;
         SCComponent = GetComponent<SelectCrewComponent>();
+        SCComponent.SetCrew();
     }
 
     void Update () {
+        currentCoolDown += Time.deltaTime;
         pointerInput = GetPointerInput();
     }
 
@@ -30,8 +36,10 @@ public class Player : MonoBehaviour
     }
 
     private void PerformClick(InputAction.CallbackContext context) {
-        int randomNumber = UnityEngine.Random.Range(0, 2);
-        GameManager.instance.pool.Get(randomNumber, new Vector3(pointerInput.x, crewSpawnYPosition, 0));
+        if (currentCoolDown <= spawnCoolDown) { return; }
+        spawnCoolDown = 0;
+        int crewNumber = SCComponent.GetCrewNumber();
+        GameManager.instance.pool.Get(crewNumber, new Vector3(pointerInput.x, crewSpawnYPosition, 0));
     }
 
     private Vector2 GetPointerInput() {

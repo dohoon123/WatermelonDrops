@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -8,6 +9,10 @@ public class GameManager : MonoBehaviour
     public PoolManager pool;
 
     public Stack<GameObject> crewStack = new();
+    [SerializeField] AudioPlayer audioPlayer;
+
+
+    [SerializeField] TextMeshProUGUI scoreText;
     int score;
 
     private void Awake() {
@@ -19,6 +24,10 @@ public class GameManager : MonoBehaviour
     }
 
     private void Update() {
+        MergeCrews();
+    }
+
+    private void MergeCrews() {
         if (crewStack.Count > 1) {
             //calc average value of two gameobjects
             GameObject go1 = crewStack.Pop();
@@ -27,9 +36,13 @@ public class GameManager : MonoBehaviour
             if (!go1.TryGetComponent<Crew>(out var cd)) {
                 return;
             }
-            
+
+            score += (cd.crewNumber + 1) * 2;
             Vector2 averagePosition = (go1.transform.position + go2.transform.position) / 2;
-            pool.Get(cd.crewData.crewNumber + 1, averagePosition);
+            pool.Get(cd.crewNumber + 1, averagePosition);
+
+            scoreText.text = score.ToString();
+            audioPlayer.PlayMergeSound();
         }
     }
 

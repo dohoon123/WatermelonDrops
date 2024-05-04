@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AudioPlayer : MonoBehaviour
 {
+    [SerializeField] AudioClip[] mergeSound;
+    [Range(0, 1)]
+    [SerializeField] float mergeVolume;
     [SerializeField] AudioSource audioObject;
     static AudioPlayer instance;
 
@@ -44,7 +48,8 @@ public class AudioPlayer : MonoBehaviour
         }
     }
 
-    public void PlayClickClip() {
-        //PlayClip(clickSound.audioClip, Camera.main.transform.position, clickSound.volume);
+    public void PlayMergeSound() {
+        int randomNumber = UnityEngine.Random.Range(0, mergeSound.Length);
+        PlayClip(mergeSound[randomNumber], Camera.main.transform.position, mergeVolume);
     }
 }
