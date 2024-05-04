@@ -12,7 +12,7 @@ public class Crew : MonoBehaviour
         }
 
         if (crewNumber >= 6) {
-            return;
+            GameManager.instance.EndGame();
         }
 
         if (cd.crewNumber == crewNumber) {

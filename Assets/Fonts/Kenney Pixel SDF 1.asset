@@ -71,7 +71,7 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0.25
+    - _OutlineWidth: 0.546
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.8333333
@@ -100,10 +100,10 @@ Material:
     m_Colors:
     - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
     - _EnvMatrixRotation: {r: 0, g: 0, b: 0, a: 0}
-    - _FaceColor: {r: 0.51397294, g: 0.6603774, b: 0.63496834, a: 0.5803922}
-    - _GlowColor: {r: 0.07943218, g: 0.8018868, b: 0.07943218, a: 0.79607844}
+    - _FaceColor: {r: 2, g: 2, b: 0.6132076, a: 0.6745098}
+    - _GlowColor: {r: 0.8490566, g: 0.4689834, b: 0.27634388, a: 0.79607844}
     - _MaskCoord: {r: 0, g: 0, b: 32767, a: 32767}
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OutlineColor: {r: 0.6792453, g: 0.43253827, b: 0.43253827, a: 0.6666667}
     - _ReflectFaceColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectOutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
@@ -167,11 +167,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: Kenney Pixel SDF
+  m_Name: Kenney Pixel SDF 1
   m_EditorClassIdentifier: 
-  hashCode: 1156823851
+  hashCode: 1355757114
   material: {fileID: -2073592626693125856}
-  materialHashCode: 1693948459
+  materialHashCode: 57744346
   m_Version: 1.1.0
   m_SourceFontFileGUID: eac279eafea90354aa3f7ad6c98234b0
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: eac279eafea90354aa3f7ad6c98234b0, type: 3}

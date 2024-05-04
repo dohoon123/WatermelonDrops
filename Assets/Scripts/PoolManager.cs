@@ -12,11 +12,7 @@ public class PoolManager : MonoBehaviour
     List<GameObject>[] pools;
 
     private void Awake() {
-        pools = new List<GameObject>[prefabs.Length];
-
-        for (int index = 0; index < pools.Length; index++) {
-            pools[index] = new List<GameObject>();
-        }
+        Refresh();
     }
 
     public GameObject Get(int index) {
@@ -49,11 +45,26 @@ public class PoolManager : MonoBehaviour
         foreach (GameObject item in pools[index]) {
             if (!item.activeSelf) {
                 select = item;
-                select.transform.position = position;
+                select.transform.SetPositionAndRotation(position, quaternion.identity);
                 select.SetActive(true);
                 break;
             }
         }
         return select;
+    }
+
+    private void Refresh() {
+        pools = new List<GameObject>[prefabs.Length];
+
+        for (int index = 0; index < pools.Length; index++) {
+            pools[index] = new List<GameObject>();
+        }
+    }
+    public void DeleteAll() {
+        foreach (List<GameObject> GOList in pools) {
+            foreach (GameObject gameObject in GOList) {
+                gameObject.SetActive(false);
+            }
+        }   
     }
 }

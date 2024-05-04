@@ -16,13 +16,18 @@ public class Player : MonoBehaviour
     Vector2 pointerInput;
     SelectCrewComponent SCComponent;
 
+    private bool isPlaying;
+
     private void Awake() {
+        isPlaying = true;
+
         currentCoolDown = spawnCoolDown;
         SCComponent = GetComponent<SelectCrewComponent>();
         SCComponent.SetCrew();
     }
 
     void Update () {
+        if (!isPlaying) { return; }
         currentCoolDown += Time.deltaTime;
         pointerInput = GetPointerInput();
     }
@@ -36,8 +41,9 @@ public class Player : MonoBehaviour
     }
 
     private void PerformClick(InputAction.CallbackContext context) {
+        if (!isPlaying) { return; }
         if (currentCoolDown <= spawnCoolDown) { return; }
-        spawnCoolDown = 0;
+        currentCoolDown = 0;
         int crewNumber = SCComponent.GetCrewNumber();
         GameManager.instance.pool.Get(crewNumber, new Vector3(pointerInput.x, crewSpawnYPosition, 0));
     }
@@ -46,5 +52,9 @@ public class Player : MonoBehaviour
         Vector3 mousePosition = pointerPosition.action.ReadValue<Vector2>();
         mousePosition.z = Camera.main.nearClipPlane;
         return Camera.main.ScreenToWorldPoint(mousePosition);
+    }
+
+    public void SetIsPlaying(bool tf) {
+        isPlaying = tf;
     }
 }
